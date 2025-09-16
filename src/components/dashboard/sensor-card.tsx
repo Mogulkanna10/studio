@@ -15,9 +15,18 @@ import {
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import type { Sensor } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { Signal, Waves, Radio } from "lucide-react";
+import React from "react";
+
+const iconMap = {
+  Signal: Signal,
+  Waves: Waves,
+  Radio: Radio,
+};
+
 
 type SensorCardProps = {
-  sensor: Sensor;
+  sensor: Omit<Sensor, "Icon">;
 };
 
 const chartConfig = {
@@ -28,6 +37,7 @@ const chartConfig = {
 };
 
 export default function SensorCard({ sensor }: SensorCardProps) {
+    const Icon = iconMap[sensor.iconName] || Signal;
   const statusColor =
     sensor.status === "Online"
       ? "bg-green-500"
@@ -40,7 +50,7 @@ export default function SensorCard({ sensor }: SensorCardProps) {
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <sensor.Icon className="h-6 w-6 text-muted-foreground" />
+            <Icon className="h-6 w-6 text-muted-foreground" />
             <CardTitle className="text-lg">{sensor.name}</CardTitle>
           </div>
           <div className="flex items-center gap-2">

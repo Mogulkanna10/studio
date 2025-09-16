@@ -18,13 +18,13 @@ const generateTimeSeriesData = (points = 20, min = 10, max = 100) => {
   }));
 };
 
-export const sensors: Sensor[] = [
+export const sensors: Omit<Sensor, 'Icon'>[] = [
   {
     id: 'lidar-01',
     name: 'LiDAR Scanner',
     type: 'LiDAR',
     status: 'Online',
-    Icon: Signal,
+    iconName: 'Signal',
     data: generateTimeSeriesData(20, 2, 5),
   },
   {
@@ -32,7 +32,7 @@ export const sensors: Sensor[] = [
     name: 'Inertial Measurement Unit',
     type: 'IMU',
     status: 'Online',
-    Icon: Waves,
+    iconName: 'Waves',
     data: generateTimeSeriesData(20, -1, 1),
   },
   {
@@ -40,7 +40,7 @@ export const sensors: Sensor[] = [
     name: 'Axle Encoder',
     type: 'Axle Encoder',
     status: 'Warning',
-    Icon: Radio,
+    iconName: 'Radio',
     data: generateTimeSeriesData(20, 1000, 1020),
   },
   {
@@ -48,7 +48,7 @@ export const sensors: Sensor[] = [
     name: 'Ultrasonic Sensor',
     type: 'Ultrasonic',
     status: 'Offline',
-    Icon: Signal,
+    iconName: 'Signal',
     data: generateTimeSeriesData(20, 0, 0),
   },
 ];

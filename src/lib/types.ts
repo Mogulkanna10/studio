@@ -13,7 +13,7 @@ export type Sensor = {
   name: string;
   type: 'LiDAR' | 'Camera' | 'IMU' | 'Axle Encoder' | 'Ultrasonic';
   status: 'Online' | 'Offline' | 'Warning';
-  Icon: LucideIcon;
+  iconName: 'Signal' | 'Waves' | 'Radio';
   data: { time: string; value: number }[];
 };
 
