@@ -43,13 +43,13 @@ export const sensors: Omit<Sensor, 'Icon'>[] = [
     iconName: 'Radio',
     data: generateTimeSeriesData(20, 1000, 1020),
   },
-  {
-    id: 'ultrasonic-01',
-    name: 'Ultrasonic Sensor',
-    type: 'Ultrasonic',
-    status: 'Offline',
-    iconName: 'Signal',
-    data: generateTimeSeriesData(20, 0, 0),
+   {
+    id: 'camera-01',
+    name: 'Track Camera',
+    type: 'Camera',
+    status: 'Online',
+    iconName: 'Camera',
+    data: generateTimeSeriesData(20, 0, 1),
   },
 ];
 

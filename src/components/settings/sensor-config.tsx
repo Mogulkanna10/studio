@@ -11,13 +11,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { sensors } from '@/lib/data';
-import { Signal, Waves, Radio } from 'lucide-react';
+import { Signal, Waves, Radio, Camera } from 'lucide-react';
 import React from 'react';
 
 const iconMap = {
   Signal: Signal,
   Waves: Waves,
   Radio: Radio,
+  Camera: Camera,
 };
 
 export default function SensorConfig() {

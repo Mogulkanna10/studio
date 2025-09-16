@@ -15,13 +15,14 @@ import {
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import type { Sensor } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Signal, Waves, Radio } from "lucide-react";
+import { Signal, Waves, Radio, Camera } from "lucide-react";
 import React from "react";
 
 const iconMap = {
   Signal: Signal,
   Waves: Waves,
   Radio: Radio,
+  Camera: Camera,
 };
 
 

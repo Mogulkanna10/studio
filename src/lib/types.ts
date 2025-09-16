@@ -11,9 +11,9 @@ export type User = {
 export type Sensor = {
   id: string;
   name: string;
-  type: 'LiDAR' | 'Camera' | 'IMU' | 'Axle Encoder' | 'Ultrasonic';
+  type: 'LiDAR' | 'Camera' | 'IMU' | 'Axle Encoder';
   status: 'Online' | 'Offline' | 'Warning';
-  iconName: 'Signal' | 'Waves' | 'Radio';
+  iconName: 'Signal' | 'Waves' | 'Radio' | 'Camera';
   data: { time: string; value: number }[];
 };
 
