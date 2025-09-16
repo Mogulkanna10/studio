@@ -5,6 +5,7 @@ import { sensors } from "@/lib/data";
 import AnomalyList from "@/components/dashboard/anomaly-list";
 import CorrelationFinder from "@/components/dashboard/correlation-finder";
 import VideoPlayer from "@/components/dashboard/video-player";
+import TrackHealthCard from "@/components/dashboard/track-health-card";
 
 export const metadata: Metadata = {
   title: "Dashboard | RailWatch ITMS",
@@ -20,16 +21,19 @@ export default function DashboardPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 flex flex-col gap-6">
-           <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
+            <TrackHealthCard />
+            <AnomalyList />
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
             {sensors.map((sensor) => (
               <SensorCard key={sensor.id} sensor={sensor} />
             ))}
           </div>
-          <CorrelationFinder />
         </div>
         <div className="lg:col-span-1 flex flex-col gap-6">
           <VideoPlayer />
-          <AnomalyList />
+          <CorrelationFinder />
         </div>
       </div>
     </div>

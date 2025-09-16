@@ -11,6 +11,30 @@
       "description": "View from the front of a train moving along tracks.",
       "imageUrl": "https://picsum.photos/seed/rail2/800/600",
       "imageHint": "train track"
+    },
+    {
+      "id": "lidar",
+      "description": "Abstract LiDAR scan of a railway track.",
+      "imageUrl": "https://picsum.photos/seed/lidar/600/400",
+      "imageHint": "lidar scan"
+    },
+    {
+      "id": "imu",
+      "description": "Close-up of a train wheel on the track showing motion.",
+      "imageUrl": "https://picsum.photos/seed/imu/600/400",
+      "imageHint": "train wheel"
+    },
+    {
+      "id": "axle encoder",
+      "description": "Axle of a train, showing mechanical parts.",
+      "imageUrl": "https://picsum.photos/seed/axle/600/400",
+      "imageHint": "train axle"
+    },
+    {
+      "id": "camera",
+      "description": "A camera lens pointed towards a railway.",
+      "imageUrl": "https://picsum.photos/seed/camera/600/400",
+      "imageHint": "camera lens"
     }
   ]
 }
