@@ -1,3 +1,16 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "login-background",
+      "description": "Train tracks curving through a modern city at dusk.",
+      "imageUrl": "https://picsum.photos/seed/rail1/1920/1080",
+      "imageHint": "train city"
+    },
+    {
+      "id": "video-placeholder",
+      "description": "View from the front of a train moving along tracks.",
+      "imageUrl": "https://picsum.photos/seed/rail2/800/600",
+      "imageHint": "train track"
+    }
+  ]
 }
