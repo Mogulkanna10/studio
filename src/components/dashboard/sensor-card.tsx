@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 import {
   Card,
   CardContent,
@@ -18,7 +17,6 @@ import type { Sensor } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Signal, Waves, Radio, Camera } from "lucide-react";
 import React from "react";
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const iconMap = {
   Signal: Signal,
@@ -32,51 +30,29 @@ type SensorCardProps = {
   sensor: Omit<Sensor, "Icon">;
 };
 
-const chartConfig = {
-  value: {
-    label: "Value",
-    color: "hsl(var(--primary))",
-  },
-};
-
 export default function SensorCard({ sensor }: SensorCardProps) {
     const Icon = iconMap[sensor.iconName] || Signal;
   const statusColor =
     sensor.status === "Online"
-      ? "text-green-400"
+      ? "text-green-500"
       : sensor.status === "Warning"
-      ? "text-yellow-400"
-      : "text-red-400";
+      ? "text-yellow-500"
+      : "text-red-500";
     
-  const placeholderImage = PlaceHolderImages.find(img => img.id === sensor.type.toLowerCase());
-
   return (
-    <Card className="relative overflow-hidden">
-        {placeholderImage && (
-            <>
-                <Image
-                    src={placeholderImage.imageUrl}
-                    alt={placeholderImage.description}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={placeholderImage.imageHint}
-                />
-                <div className="absolute inset-0 bg-black/60" />
-            </>
-        )}
-      <div className="relative">
+    <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Icon className="h-6 w-6 text-white/80" />
-              <CardTitle className="text-white">{sensor.name}</CardTitle>
+              <Icon className="h-6 w-6 text-muted-foreground" />
+              <CardTitle>{sensor.name}</CardTitle>
             </div>
             <div className="flex items-center gap-2">
               <div className={cn("h-2.5 w-2.5 rounded-full", statusColor.replace('text-', 'bg-'))} />
               <span className={cn("text-sm font-medium", statusColor)}>{sensor.status}</span>
             </div>
           </div>
-          <CardDescription className="text-white/70">{sensor.type} Data Feed</CardDescription>
+          <CardDescription>{sensor.type} Data Feed</CardDescription>
         </CardHeader>
         <CardContent>
           <ChartContainer config={{value: {label: sensor.name, color: "hsl(var(--primary))"}}} className="h-40 w-full">
@@ -90,37 +66,35 @@ export default function SensorCard({ sensor }: SensorCardProps) {
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border) / 0.2)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
               <XAxis
                 dataKey="time"
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
                 tickFormatter={(value) => value.slice(0, 3)}
-                stroke="hsl(var(--foreground) / 0.5)"
-                className="text-white"
+                stroke="hsl(var(--muted-foreground))"
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
-                stroke="hsl(var(--foreground) / 0.5)"
+                stroke="hsl(var(--muted-foreground))"
               />
               <ChartTooltip
                 cursor={false}
-                content={<ChartTooltipContent indicator="dot" labelClassName="text-white" className="bg-background/80 backdrop-blur-sm" />}
+                content={<ChartTooltipContent indicator="dot" />}
               />
               <Area
                 dataKey="value"
                 type="natural"
-                fill="hsl(var(--primary) / 0.3)"
+                fill="hsl(var(--primary) / 0.2)"
                 stroke="hsl(var(--primary))"
                 stackId="a"
               />
             </AreaChart>
           </ChartContainer>
         </CardContent>
-      </div>
     </Card>
   );
 }
