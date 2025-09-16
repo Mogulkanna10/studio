@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 
-export function AppLayout({ children }: { children: React.ReactNode }) {
+export function AppLayout({ children }) {
   const pathname = usePathname();
 
   return (

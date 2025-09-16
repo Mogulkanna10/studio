@@ -13,10 +13,9 @@ import { anomalies as initialAnomalies } from "@/lib/data";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { detectAnomalies } from "@/ai/flows/detect-anomalies-in-real-time";
-import { Anomaly } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-const anomalyIcons: { [key: string]: React.ElementType } = {
+const anomalyIcons = {
     'Track Geometry': GitMerge,
     'Corrugation': Waves,
     'Ballast Defect': CircleDashed,

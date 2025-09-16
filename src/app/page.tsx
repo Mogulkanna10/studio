@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 export default function LandingPage() {
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     router.push('/dashboard');
   };

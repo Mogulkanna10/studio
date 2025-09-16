@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import DataFilters from "@/components/dashboard/data-filters";
 import SensorCard from "@/components/dashboard/sensor-card";
 import { sensors } from "@/lib/data";
@@ -7,7 +6,7 @@ import CorrelationFinder from "@/components/dashboard/correlation-finder";
 import VideoPlayer from "@/components/dashboard/video-player";
 import TrackHealthCard from "@/components/dashboard/track-health-card";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Dashboard | RailWatch ITMS",
 };
 

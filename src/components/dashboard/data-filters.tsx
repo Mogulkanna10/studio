@@ -3,7 +3,6 @@
 import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, Filter } from "lucide-react";
-import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,7 @@ import {
 } from "@/components/ui/select";
 
 export default function DataFilters() {
-  const [date, setDate] = React.useState<DateRange | undefined>({
+  const [date, setDate] = React.useState({
     from: new Date(2024, 4, 20),
     to: new Date(),
   });

@@ -13,7 +13,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import type { Sensor } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Signal, Waves, Radio, Camera } from "lucide-react";
 import React from "react";
@@ -26,11 +25,7 @@ const iconMap = {
 };
 
 
-type SensorCardProps = {
-  sensor: Omit<Sensor, "Icon">;
-};
-
-export default function SensorCard({ sensor }: SensorCardProps) {
+export default function SensorCard({ sensor }) {
     const Icon = iconMap[sensor.iconName] || Signal;
   const statusColor =
     sensor.status === "Online"

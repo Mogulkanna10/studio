@@ -15,8 +15,8 @@ import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import { Badge } from '../ui/badge';
 
 export default function VideoPlayer() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [hasCameraPermission, setHasCameraPermission] = useState<boolean | null>(null);
+  const videoRef = useRef(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function VideoPlayer() {
     // Cleanup function to stop video stream
     return () => {
         if(videoRef.current && videoRef.current.srcObject){
-            const stream = videoRef.current.srcObject as MediaStream;
+            const stream = videoRef.current.srcObject;
             stream.getTracks().forEach(track => track.stop());
         }
     }

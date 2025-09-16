@@ -1,9 +1,8 @@
-import type { Metadata } from 'next';
 import ReportGenerator from '@/components/reports/report-generator';
 import ReportList from '@/components/reports/report-list';
 import { Separator } from '@/components/ui/separator';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Reports | RailWatch ITMS',
 };
 

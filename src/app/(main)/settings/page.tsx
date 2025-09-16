@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import {
   Tabs,
   TabsContent,
@@ -9,7 +8,7 @@ import UserManagement from '@/components/settings/user-management';
 import SensorConfig from '@/components/settings/sensor-config';
 import SystemThresholds from '@/components/settings/system-thresholds';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Settings | RailWatch ITMS',
 };
 

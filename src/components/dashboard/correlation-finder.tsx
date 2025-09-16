@@ -14,7 +14,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
   identifyCorrelations,
-  type IdentifyCorrelationsOutput,
 } from "@/ai/flows/identify-correlations-between-sensor-data";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -24,11 +23,11 @@ export default function CorrelationFinder() {
   const [request, setRequest] = useState(
     "Correlate high vibration readings from the IMU with LiDAR data showing ballast degradation in Sector 4."
   );
-  const [result, setResult] = useState<IdentifyCorrelationsOutput | null>(null);
+  const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setResult(null);
