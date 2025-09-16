@@ -19,19 +19,19 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 grid gap-6 md:grid-cols-2">
-          {sensors.map((sensor) => (
-            <SensorCard key={sensor.id} sensor={sensor} />
-          ))}
+        <div className="lg:col-span-2 flex flex-col gap-6">
+           <div className="grid gap-6 md:grid-cols-2">
+            {sensors.map((sensor) => (
+              <SensorCard key={sensor.id} sensor={sensor} />
+            ))}
+          </div>
+          <CorrelationFinder />
         </div>
         <div className="lg:col-span-1 flex flex-col gap-6">
           <VideoPlayer />
           <AnomalyList />
         </div>
       </div>
-       <div className="grid grid-cols-1 gap-6">
-          <CorrelationFinder />
-        </div>
     </div>
   );
 }

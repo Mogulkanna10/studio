@@ -33,7 +33,7 @@ type SensorCardProps = {
 const chartConfig = {
   value: {
     label: "Value",
-    color: "hsl(var(--accent))",
+    color: "hsl(var(--chart-1))",
   },
 };
 
@@ -50,9 +50,9 @@ export default function SensorCard({ sensor }: SensorCardProps) {
     <Card>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Icon className="h-6 w-6 text-muted-foreground" />
-            <CardTitle className="text-lg">{sensor.name}</CardTitle>
+            <CardTitle>{sensor.name}</CardTitle>
           </div>
           <div className="flex items-center gap-2">
             <div className={cn("h-2.5 w-2.5 rounded-full", statusColor)} />
