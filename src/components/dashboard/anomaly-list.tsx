@@ -8,11 +8,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, Loader2 } from "lucide-react";
+import { AlertTriangle, Loader2, GitMerge, Waves, CircleDashed } from "lucide-react";
 import { anomalies as initialAnomalies } from "@/lib/data";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { detectAnomalies } from "@/ai/flows/detect-anomalies-in-real-time";
+import { Anomaly } from "@/lib/types";
+import { cn } from "@/lib/utils";
+
+const anomalyIcons: { [key: string]: React.ElementType } = {
+    'Track Geometry': GitMerge,
+    'Corrugation': Waves,
+    'Ballast Defect': CircleDashed,
+    'Default': AlertTriangle,
+};
+
 
 export default function AnomalyList() {
     const [isLoading, setIsLoading] = useState(false);
@@ -71,30 +81,43 @@ export default function AnomalyList() {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {initialAnomalies.map((anomaly) => (
-            <div key={anomaly.id} className="flex items-start gap-4">
-              <div className="flex-shrink-0">
-                <Badge
-                  variant={
-                    anomaly.severity === "High"
-                      ? "destructive"
-                      : anomaly.severity === "Medium"
-                      ? "secondary"
-                      : "outline"
-                  }
-                >
-                  {anomaly.severity}
-                </Badge>
-              </div>
-              <div className="flex-grow">
-                <p className="font-semibold">{anomaly.type} at {anomaly.chainage}</p>
-                <p className="text-sm text-muted-foreground">
-                  {anomaly.description}
-                </p>
-                <p className="text-xs text-muted-foreground/70 mt-1">{anomaly.timestamp}</p>
-              </div>
-            </div>
-          ))}
+          {initialAnomalies.map((anomaly) => {
+            const Icon = anomalyIcons[anomaly.type] || anomalyIcons.Default;
+            return (
+                <div key={anomaly.id} className="flex items-start gap-4">
+                    <div className={cn("p-2 rounded-full bg-muted", {
+                        'bg-destructive/10': anomaly.severity === 'High',
+                        'bg-secondary': anomaly.severity === 'Medium',
+                        'bg-muted': anomaly.severity === 'Low',
+                    })}>
+                         <Icon className={cn("h-5 w-5 text-muted-foreground", {
+                            'text-destructive': anomaly.severity === 'High',
+                            'text-secondary-foreground': anomaly.severity === 'Medium',
+                         })} />
+                    </div>
+                    <div className="flex-grow">
+                        <div className='flex justify-between items-center'>
+                            <p className="font-semibold">{anomaly.type} at {anomaly.chainage}</p>
+                            <Badge
+                            variant={
+                                anomaly.severity === "High"
+                                ? "destructive"
+                                : anomaly.severity === "Medium"
+                                ? "secondary"
+                                : "outline"
+                            }
+                            >
+                            {anomaly.severity}
+                            </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                        {anomaly.description}
+                        </p>
+                        <p className="text-xs text-muted-foreground/70 mt-1">{anomaly.timestamp}</p>
+                    </div>
+                </div>
+            )
+          })}
         </div>
       </CardContent>
     </Card>
