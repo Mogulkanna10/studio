@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -16,7 +17,7 @@
       "id": "lidar",
       "description": "Abstract LiDAR scan of a railway track.",
       "imageUrl": "https://picsum.photos/seed/lidar/600/400",
-      "imageHint": "lidar scan"
+      "imageHint": "railway track"
     },
     {
       "id": "imu",
@@ -34,7 +35,7 @@
       "id": "camera",
       "description": "A camera lens pointed towards a railway.",
       "imageUrl": "https://picsum.photos/seed/camera/600/400",
-      "imageHint": "camera lens"
+      "imageHint": "train view"
     }
   ]
 }
