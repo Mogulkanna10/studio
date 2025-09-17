@@ -59,9 +59,8 @@ export default function UserManagement() {
                 <TableCell>
                   <div className="flex items-center gap-3">
                     <Avatar>
-                      <AvatarImage src={user.avatar} alt={user.name} />
                       <AvatarFallback>
-                        {user.name.slice(0, 2).toUpperCase()}
+                        {user.name.split(' ').map(c => c[0]).join('').toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
                     <div className="font-medium">
