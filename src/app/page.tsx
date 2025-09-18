@@ -53,7 +53,7 @@ export default function LoginPage() {
           </p>
         </div>
         <footer className="absolute bottom-4 w-full text-center text-sm text-white/50 z-10">
-            © {new Date().getFullYear()} RailWatch. All rights reserved.
+            © 2024 RailWatch. All rights reserved.
         </footer>
       </div>
 
