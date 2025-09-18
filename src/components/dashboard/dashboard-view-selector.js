@@ -28,17 +28,17 @@ const iconMap = {
 export default function DashboardViewSelector({ views, activeView, setActiveView }) {
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 pr-4">
             {views.map(view => {
                 const Icon = iconMap[view.label] || Signal;
                 return (
                     <Button
                         key={view.id}
                         variant={activeView === view.id ? "secondary" : "ghost"}
-                        className="w-full justify-start"
+                        className="w-full justify-start text-base h-10 px-4"
                         onClick={() => setActiveView(view.id)}
                     >
-                        <Icon className="mr-2 h-4 w-4" />
+                        <Icon className="mr-3 h-5 w-5 text-muted-foreground" />
                         {view.label}
                     </Button>
                 )
