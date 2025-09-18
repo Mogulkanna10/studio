@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DataFilters from '@/components/dashboard/data-filters';
 import DashboardViewSelector from '@/components/dashboard/dashboard-view-selector';
 import AnomalyList from '@/components/dashboard/anomaly-list';
@@ -10,9 +10,14 @@ import SensorCard from '@/components/dashboard/sensor-card';
 import TrackHealthCard from '@/components/dashboard/track-health-card';
 import VideoPlayer from '@/components/dashboard/video-player';
 import { sensors } from '@/lib/data';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function DashboardPage() {
-  const [activeView, setActiveView] = useState('track-health');
+  const [activeView, setActiveView] = useState(null);
+
+  useEffect(() => {
+    setActiveView('track-health');
+  }, []);
 
   const views = [
     { id: 'track-health', label: 'Track Health' },
@@ -24,6 +29,14 @@ export default function DashboardPage() {
   ];
 
   const renderActiveView = () => {
+    if (activeView === null) {
+        return (
+            <div className="space-y-4">
+                <Skeleton className="h-[200px] w-full" />
+                <Skeleton className="h-[400px] w-full" />
+            </div>
+        )
+    }
     if (activeView === 'track-health') {
       return <TrackHealthCard />;
     }
