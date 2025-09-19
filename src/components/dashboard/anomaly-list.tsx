@@ -14,6 +14,7 @@ import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { detectAnomalies } from "@/ai/flows/detect-anomalies-in-real-time";
 import { cn } from "@/lib/utils";
+import { useNotifications } from "@/context/notification-context";
 
 const anomalyIcons = {
     'Track Geometry': GitMerge,
@@ -26,17 +27,23 @@ const anomalyIcons = {
 export default function AnomalyList() {
     const [isLoading, setIsLoading] = useState(false);
     const { toast } = useToast();
+    const { addNotification } = useNotifications();
 
     const handleCheckAnomalies = async () => {
         setIsLoading(true);
         try {
             const result = await detectAnomalies({
-                sensorData: "Recent sensor readings showing a spike in vibration at CH 15+200.",
+                sensorData: "Recent sensor readings showing a spike in vibration at CH 15+200. A potential crack is suspected.",
                 baselineData: "Normal vibration levels are between 0.1g and 0.5g.",
                 threshold: 0.8
             });
 
             if (result.isAnomaly) {
+                addNotification({
+                  title: "New Anomaly Detected!",
+                  description: result.anomalyDescription,
+                  severity: 'High'
+                });
                 toast({
                     title: "New Anomaly Detected!",
                     description: result.anomalyDescription,
