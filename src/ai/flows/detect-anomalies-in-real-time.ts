@@ -19,7 +19,9 @@ export type DetectAnomaliesInput = z.infer<typeof DetectAnomaliesInputSchema>;
 
 const DetectAnomaliesOutputSchema = z.object({
   isAnomaly: z.boolean().describe('Whether an anomaly is detected.'),
-  anomalyDescription: z.string().describe('Description of the detected anomaly.'),
+  location: z.string().describe('The location of the defect (e.g., chainage).'),
+  defectType: z.string().describe('The specific type of defect identified (e.g., Crack, Buckling).'),
+  anomalyDescription: z.string().describe('A summary description of the detected anomaly.'),
 });
 export type DetectAnomaliesOutput = z.infer<typeof DetectAnomaliesOutputSchema>;
 
@@ -39,7 +41,8 @@ const prompt = ai.definePrompt({
   Baseline Data: {{{baselineData}}}
   Threshold: {{{threshold}}}
 
-  Respond with a boolean indicating whether an anomaly is detected and a description of the anomaly.
+  If an anomaly is detected, respond with isAnomaly: true and provide the specific location, defect type, and a descriptive summary.
+  If no anomaly is detected, respond with isAnomaly: false and leave the other fields empty.
   `,
 });
 

@@ -39,14 +39,17 @@ export default function AnomalyList() {
             });
 
             if (result.isAnomaly) {
+                const notificationTitle = `New Anomaly: ${result.defectType}`;
+                const notificationDescription = `${result.anomalyDescription} at ${result.location}.`;
+                
                 addNotification({
-                  title: "New Anomaly Detected!",
-                  description: result.anomalyDescription,
+                  title: notificationTitle,
+                  description: notificationDescription,
                   severity: 'High'
                 });
                 toast({
                     title: "New Anomaly Detected!",
-                    description: result.anomalyDescription,
+                    description: notificationDescription,
                     variant: "destructive",
                 });
             } else {
