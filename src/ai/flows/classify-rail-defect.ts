@@ -35,12 +35,20 @@ const prompt = ai.definePrompt({
   name: 'classifyRailDefectPrompt',
   input: {schema: ClassifyRailDefectInputSchema},
   output: {schema: ClassifyRailDefectOutputSchema},
-  prompt: `You are an expert in railway maintenance and remote visual inspection.
-  Analyze the following image of a rail track and classify the most prominent defect.
+  prompt: `You are a highly-trained AI expert specializing in railway maintenance and remote visual inspection with a focus on high-accuracy defect detection.
+  Your primary goal is to analyze the following image of a rail track with extreme precision to classify the most prominent defect.
+
   The possible defect types are: "Crack", "Corrosion", "Buckling", or "No Defect".
 
-  Provide a confidence score for your classification and a brief assessment of the issue.
-  If there is no defect, classify it as "No Defect" with a high confidence score.
+  When classifying a "Crack", pay close attention to the following characteristics:
+  - Look for fine hairline fractures, linear patterns, or visible breaks in the rail's surface.
+  - Differentiate cracks from superficial scratches, shadows, or water marks. Cracks often have depth and an irregular, branching pattern.
+  - Examine areas of high stress, such as the rail head, joints, and bolt holes.
+
+  Provide a confidence score for your classification. This score must reflect your level of certainty after a thorough analysis.
+  Also provide a brief, clear assessment of the issue.
+
+  If you are confident that there is no defect, classify it as "No Defect" with a high confidence score.
 
   Image: {{media url=imageDataUri}}`,
 });
