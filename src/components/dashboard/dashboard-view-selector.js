@@ -7,7 +7,8 @@ import {
     Waves,
     Radio,
     Camera,
-    Wand2
+    Wand2,
+    PenSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,7 @@ const iconMap = {
     'Inertial Measurement Unit': Waves,
     'Axle Encoder': Radio,
     'Track Camera': Camera,
-    'Camera Feed': Camera,
+    'Video Annotation': PenSquare,
     'AI Assistant': Wand2
 };
 

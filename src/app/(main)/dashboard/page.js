@@ -24,7 +24,7 @@ export default function DashboardPage() {
     { id: 'anomalies', label: 'Anomalies' },
     { id: 'predictive', label: 'Predictions' },
     ...sensors.map(s => ({ id: s.id, label: s.name })),
-    { id: 'video', label: 'Camera Feed' },
+    { id: 'video', label: 'Video Annotation' },
     { id: 'correlation', label: 'AI Assistant' },
   ];
 
