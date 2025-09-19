@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Train, ShieldCheck } from 'lucide-react';
+import { Train, ShieldCheck, Loader2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,6 +15,11 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -31,11 +36,11 @@ export default function LoginPage() {
     <div className="relative min-h-screen w-full grid grid-cols-1 md:grid-cols-2">
        <div className="relative flex-col items-center justify-center p-8 text-white hidden md:flex bg-zinc-900">
         <Image
-          src="https://picsum.photos/seed/railway-night/1920/1080"
-          alt="Railway at night"
+          src="https://images.unsplash.com/photo-1516962080544-e3b6e51ab3c7?q=80&w=1920&h=1080&fit=crop"
+          alt="Railway at sunset"
           fill
           className="object-cover opacity-30"
-          data-ai-hint="railway night"
+          data-ai-hint="railway sunset"
         />
         <div className="relative z-10 text-center space-y-4">
             <div className="flex items-center gap-3 justify-center mb-6">
@@ -64,40 +69,48 @@ export default function LoginPage() {
                 <CardDescription>Enter your email below to login to your account.</CardDescription>
             </CardHeader>
             <CardContent>
-                <form onSubmit={handleLogin} className="space-y-4">
-                    <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input
-                        id="email"
-                        type="email"
-                        placeholder="m@example.com"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        disabled={isLoading}
-                        />
+                {!isClient ? (
+                    <div className="flex justify-center items-center h-48">
+                        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
                     </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="password">Password</Label>
-                        <Input 
-                            id="password" 
-                            type="password" 
-                            required 
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            disabled={isLoading}
-                        />
-                    </div>
-                    <Button type="submit" className="w-full" disabled={isLoading}>
-                        {isLoading ? 'Logging in...' : 'Log In'}
-                    </Button>
-                </form>
-                <div className="mt-4 text-center text-sm">
-                    Don't have an account?{' '}
-                    <a href="#" className="underline">
-                        Sign up
-                    </a>
-                </div>
+                ) : (
+                    <>
+                        <form onSubmit={handleLogin} className="space-y-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email</Label>
+                                <Input
+                                id="email"
+                                type="email"
+                                placeholder="m@example.com"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                disabled={isLoading}
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="password">Password</Label>
+                                <Input 
+                                    id="password" 
+                                    type="password" 
+                                    required 
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            <Button type="submit" className="w-full" disabled={isLoading}>
+                                {isLoading ? 'Logging in...' : 'Log In'}
+                            </Button>
+                        </form>
+                        <div className="mt-4 text-center text-sm">
+                            Don't have an account?{' '}
+                            <a href="#" className="underline">
+                                Sign up
+                            </a>
+                        </div>
+                    </>
+                )}
             </CardContent>
         </Card>
       </div>
