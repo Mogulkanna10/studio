@@ -7,8 +7,9 @@ import {
   FileText,
   Settings,
   LayoutDashboard,
+  Gauge
 } from 'lucide-react';
-import type { Sensor, Anomaly, User, Report } from './types';
+import type { Sensor, Anomaly, User, Report, ClassifierPerformanceData } from './types';
 
 // Mock Data Generation
 const generateTimeSeriesData = (points = 20, min = 10, max = 100) => {
@@ -124,3 +125,20 @@ export const navItems = [
     { href: '/reports', label: 'Reports', Icon: FileText },
     { href: '/settings', label: 'Settings', Icon: Settings },
 ]
+
+export const classifierPerformanceData: ClassifierPerformanceData = {
+  overallAccuracy: 0.96,
+  classMetrics: [
+    { className: 'Crack', accuracy: 0.94 },
+    { className: 'Corrosion', accuracy: 0.97 },
+    { className: 'Buckling', accuracy: 0.92 },
+    { className: 'No Defect', accuracy: 0.99 },
+  ],
+  confusionMatrix: [
+    [94, 2, 3, 1],
+    [1, 97, 1, 1],
+    [4, 1, 92, 3],
+    [0, 1, 0, 99],
+  ],
+  classNames: ['Crack', 'Corrosion', 'Buckling', 'No Defect'],
+};

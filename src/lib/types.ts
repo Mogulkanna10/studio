@@ -32,3 +32,13 @@ export type Report = {
   generatedBy: string;
   summary: string;
 };
+
+export type ClassifierPerformanceData = {
+  overallAccuracy: number;
+  classMetrics: {
+    className: string;
+    accuracy: number;
+  }[];
+  confusionMatrix: number[][];
+  classNames: string[];
+};

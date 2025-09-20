@@ -11,6 +11,7 @@ import TrackHealthCard from '@/components/dashboard/track-health-card';
 import VideoPlayer from '@/components/dashboard/video-player';
 import { sensors } from '@/lib/data';
 import { Skeleton } from '@/components/ui/skeleton';
+import ClassifierPerformance from '@/components/dashboard/classifier-performance';
 
 export default function DashboardPage() {
   const [activeView, setActiveView] = useState(null);
@@ -23,6 +24,7 @@ export default function DashboardPage() {
     { id: 'track-health', label: 'Track Health' },
     { id: 'anomalies', label: 'Anomalies' },
     { id: 'predictive', label: 'Predictions' },
+    { id: 'performance', label: 'Classifier Performance'},
     ...sensors.map(s => ({ id: s.id, label: s.name })),
     { id: 'video', label: 'Video Annotation' },
     { id: 'correlation', label: 'AI Assistant' },
@@ -45,6 +47,9 @@ export default function DashboardPage() {
     }
     if (activeView === 'predictive') {
       return <PredictiveChart />;
+    }
+    if (activeView === 'performance') {
+        return <ClassifierPerformance />;
     }
     if (activeView === 'video') {
       return <VideoPlayer />;

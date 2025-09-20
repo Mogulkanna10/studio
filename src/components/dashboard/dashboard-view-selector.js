@@ -1,4 +1,5 @@
 
+
 import {
     ShieldCheck,
     AlertTriangle,
@@ -9,6 +10,7 @@ import {
     Camera,
     Wand2,
     PenSquare,
+    Gauge,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -22,7 +24,8 @@ const iconMap = {
     'Axle Encoder': Radio,
     'Track Camera': Camera,
     'Video Annotation': PenSquare,
-    'AI Assistant': Wand2
+    'AI Assistant': Wand2,
+    'Classifier Performance': Gauge,
 };
 
 
